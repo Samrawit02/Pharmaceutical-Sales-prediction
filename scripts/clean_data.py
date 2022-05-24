@@ -2,8 +2,12 @@ import numpy as np
 import pandas as pd
 import sys
 import os
+from log import get_logger
 
 sys.path.append(os.path.abspath(os.path.join('../')))
+
+my_logger = get_logger("Clean Data")
+my_logger.debug("Loaded successfully!")
 
 class Clean_data():
 
