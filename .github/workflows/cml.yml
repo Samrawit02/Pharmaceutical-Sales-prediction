@@ -5,14 +5,12 @@ jobs:
   run:
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: iterative/setup-cml@v1
+      - uses: actions/checkout@v2 
       - name: file handler
         run: |
           pip install -r requirements.txt
           cd scripts/
-          python file_handler.py
+          python create_.py
       - name: Write CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
