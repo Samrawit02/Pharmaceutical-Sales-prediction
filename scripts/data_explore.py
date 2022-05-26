@@ -2,7 +2,7 @@ from IPython.display import Markdown, display
 
 from log import get_logger
 
-my_logger = get_logger("Clean Data")
+my_logger = get_logger("Explore Data")
 my_logger.debug("Loaded successfully!")
 
 class Explore_Data():

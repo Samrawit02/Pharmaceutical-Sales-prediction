@@ -14,7 +14,7 @@ class FileHandler():
     def to_csv(self, df, csv_path, index=False):
         try:
             df.to_csv(csv_path, index=index)
-            # self.logger.info(f'Csv file saved in {csv_path}.')
+            self.logger.info(f'Csv file saved in {csv_path}.')
 
         except Exception:
             self.logger.exception('File saving failed.')
@@ -22,7 +22,7 @@ class FileHandler():
     def read_csv(self, csv_path, missing_values=["n/a", "na", "undefined"]):
         try:
             df = pd.read_csv(csv_path, na_values=missing_values)
-            # self.logger.info(f'Csv file read from {csv_path}.')
+            self.logger.info(f'Csv file read from {csv_path}.')
             return df
 
         except FileNotFoundError:
@@ -36,7 +36,7 @@ class FileHandler():
             return data_url
 
         except Exception:
-            # self.logger.exception("Error while fetching data url from dvc.")
+            self.logger.exception("Error while fetching data url from dvc.")
             pass
 
     def save_model(self, model, model_name):
@@ -55,8 +55,8 @@ class FileHandler():
         try:
             name = Config.MODELS_PATH / model_name
             model = pickle.load(open(str(name), "rb"))
-            # self.logger.info(f'{ model_name }.pkl is read from {Config.MODELS_PATH}.')
+            self.logger.info(f'{ model_name }.pkl is read from {Config.MODELS_PATH}.')
             return model
         except FileNotFoundError:
-            # self.logger.exception("Model not found.")
+            self.logger.exception("Model not found.")
             pass
