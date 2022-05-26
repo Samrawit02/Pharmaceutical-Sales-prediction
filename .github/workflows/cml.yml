@@ -1,23 +1,18 @@
 name: Pharmaceutical-Sales-prediction
 
-on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+on: [push]
 jobs:
-    run:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Train model
-              env:
-                  REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: |
-                  cml ci --unshallow
-                  pip install -r requirements.txt  # Install dependencies
-                  #dvc repro                        # Reproduce pipeline
-            - name: Write CML report
-              run: |
-                  python scripts/file_handler.py
-                   - name: Write CML report
+  run:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: train time series model
+        run: |
+          pip install -r requirements.txt
+          cd scripts/
+          python time_series_model.py
+      - name: Write CML report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
