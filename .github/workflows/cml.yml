@@ -1,26 +1,20 @@
 name: Pharmaceutical-Sales-prediction
-on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+on: [push]
 jobs:
   run:
-    runs-on: ubuntu-latest
-    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+    runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
-      - name: Train model
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: train time series model
         run: |
-          cml ci --unshallow
-          pip install -r requirements.txt  # Install dependencies
-          #dvc repro                        # Reproduce pipeline
+          pip install -r requirements.txt
+          cd scripts/
+          python data_explore.py
       - name: Write CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cat "MAJOR CHANGES DONE" >> report.md
-          cml send-comment report.md
-       
+
+            echo "## Model Training Completed" > report.md
