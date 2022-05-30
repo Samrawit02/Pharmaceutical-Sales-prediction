@@ -1,6 +1,7 @@
 import pandas as pd
 from config import Config
 from file_handler import FileHandler
+from sklearn.preprocessing import LabelEncoder
 
 '''
 This is a simple script for creating features for train and test data
@@ -71,20 +72,25 @@ class CreateFeatures():
     df = self.get_state_holiday_info(df)
 
     # Feature creation
-    df['Year'] = df.Date.dt.year
-    df['Month'] = df.Date.dt.month
-    df['Day'] = df.Date.dt.day
-    df['DayOfWeek'] = df.Date.dt.dayofweek
-    df['WeekOfYear'] = df.Date.dt.weekofyear
+    # df['Date'] = pd.to_datetime(df['Date'])
+    df['Year'] = df['Date'].apply(lambda x: x.year)
+    df['Month'] = df['Date'].apply(lambda x: x.month)
+    df['Day'] = df['Date'].apply(lambda x: x.day)
+    df['WeekOfYear'] = df['Date'].apply(lambda x: x.weekofyear)
+    df['weekday'] = df['DayOfWeek'].apply(lambda x: 0 if (x in [6, 7]) else 1)
 
-    df['Weekend'] = df['DayOfWeek'].apply(lambda x: 1 if x >= 6 else 0)
-    df['Weekday'] = df['DayOfWeek'].apply(lambda x: 1 if x < 6 else 0)
-
+    
     df["part_of_month"] = df["Day"].apply(self.get_part_of_month)
 
     # Combining similar columns into one column and dropping old columns
     df['CompetitionOpen'] = 12 * (df.Year - df.CompetitionOpenSinceYear) + (df.Month - df.CompetitionOpenSinceMonth)
     df.drop(["CompetitionOpenSinceYear", "CompetitionOpenSinceMonth"], axis=1, inplace=True)
+
+# since machines understand only numbers change categorical variables to numerical value
+    lb = LabelEncoder()
+    # df['StateHoliday'] = lb.fit_transform(df['StateHoliday'])
+    df['Assortment'] = lb.fit_transform(df['Assortment'])
+    df['StoreType'] = lb.fit_transform(df['StoreType'])
 
     df['Promo2Open'] = 12 * (df.Year - df.Promo2SinceYear) + (df.WeekOfYear - df.Promo2SinceWeek) / 4.0
     df.drop(["Promo2SinceYear", "Promo2SinceWeek"], axis=1, inplace=True)
@@ -115,10 +121,10 @@ class CreateFeatures():
     test_features.drop(["Store", "Open"], axis=1, inplace=True)
     train_features.drop(["Store", "Open", "Sales", "Customers"], axis=1, inplace=True)
 
-    self.file_handler.to_csv(test_features, str(Config.FEATURES_PATH / "test_features.csv"))
-    self.file_handler.to_csv(train_features, str(Config.FEATURES_PATH / "train_features.csv"))
-    self.file_handler.to_csv(train_sales, str(Config.FEATURES_PATH / "train_sales.csv"))
-    self.file_handler.to_csv(train_customers, str(Config.FEATURES_PATH / "train_customers.csv"))
+    self.file_handler.to_csv(test_features, str(Config.FEATURES_PATH / "test1_features.csv"))
+    self.file_handler.to_csv(train_features, str(Config.FEATURES_PATH / "train1_features.csv"))
+    self.file_handler.to_csv(train_sales, str(Config.FEATURES_PATH / "target1_sales.csv"))
+    self.file_handler.to_csv(train_customers, str(Config.FEATURES_PATH / "target1_customers.csv"))
 
 
 cf = CreateFeatures()
