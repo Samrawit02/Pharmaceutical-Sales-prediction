@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/samrit/Desktop/10%20accadamay/week3/Pharmaceutical-Sales-prediction/scripts/mlruns/1/eb73e9a34b9a49ffb68ca8be40c2f1ba/artifacts
+end_time: 1653977870722
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: eb73e9a34b9a49ffb68ca8be40c2f1ba
+run_uuid: eb73e9a34b9a49ffb68ca8be40c2f1ba
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1653977869374
+status: 4
+tags: []
+user_id: samrit

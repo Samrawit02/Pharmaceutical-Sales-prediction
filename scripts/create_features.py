@@ -72,7 +72,7 @@ class CreateFeatures():
     df = self.get_state_holiday_info(df)
 
     # Feature creation
-    # df['Date'] = pd.to_datetime(df['Date'])
+    df['Date'] = pd.to_datetime(df['Date'])
     df['Year'] = df['Date'].apply(lambda x: x.year)
     df['Month'] = df['Date'].apply(lambda x: x.month)
     df['Day'] = df['Date'].apply(lambda x: x.day)
