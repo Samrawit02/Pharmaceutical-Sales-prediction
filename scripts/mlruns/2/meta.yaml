@@ -1,0 +1,4 @@
+artifact_location: file:///C:/Users/samrit/Documents/10Accademy%20Resourse/testWeek3/Pharmaceutical-Sales-prediction/scripts/mlruns/2
+experiment_id: '2'
+lifecycle_stage: active
+name: RandomForestRegressor
