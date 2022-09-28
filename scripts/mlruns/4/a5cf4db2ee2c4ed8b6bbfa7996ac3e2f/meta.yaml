@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Samrit/Desktop/10%20academy%20projects/Pharmaceutical%20Sales%20Prediction/Pharmaceutical-Sales-prediction/scripts/mlruns/4/a5cf4db2ee2c4ed8b6bbfa7996ac3e2f/artifacts
+end_time: 1660056200296
+entry_point_name: ''
+experiment_id: '4'
+lifecycle_stage: active
+name: ''
+run_id: a5cf4db2ee2c4ed8b6bbfa7996ac3e2f
+run_uuid: a5cf4db2ee2c4ed8b6bbfa7996ac3e2f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1660056198440
+status: 4
+tags: []
+user_id: Samrit

@@ -1,0 +1,4 @@
+artifact_location: file:///C:/Users/Samrit/Desktop/10%20academy%20projects/Pharmaceutical%20Sales%20Prediction/Pharmaceutical-Sales-prediction/scripts/mlruns/5
+experiment_id: '5'
+lifecycle_stage: active
+name: Linear Regression
