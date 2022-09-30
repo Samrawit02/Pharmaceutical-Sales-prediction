@@ -8,3 +8,4 @@ xgboost
 dvc
 mlflow
 awesome_streamlit
+shap
