@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import awesome_streamlit as ast
 
-sys.path.append(os.path.abspath(os.path.join('..\scripts')))
+sys.path.append(os.path.abspath(os.path.join('.\scripts')))
 from file_handler import FileHandler
 
 def write():
