@@ -8,7 +8,7 @@ import streamlit as st
 import awesome_streamlit as ast
 
 sys.path.append(os.path.abspath(os.path.join('..\scripts')))
-from file_handler import FileHandler
+from scripts.file_handler import FileHandler
 
 def write():
     """Used to write the page in the app.py file"""
