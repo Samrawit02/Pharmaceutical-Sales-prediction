@@ -8,15 +8,14 @@ import streamlit as st
 import awesome_streamlit as ast
 
 sys.path.append(os.path.abspath(os.path.join('.\scripts')))
-from file_handler import FileHandler
+
 
 def write():
     """Used to write the page in the app.py file"""
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.header('Prediction on test data')
-    file_handler = FileHandler()
-    df = file_handler.read_csv('../../../features/test_features.csv')
-    test_df = file_handler.read_csv('src/data/test.csv')
+    df = pd.read_csv('../../../features/test_features.csv')
+    test_df = pd.read_csv('src/data/test.csv')
     st.markdown('### Sample test data input')
     st.write(test_df.head(5))
     model = pickle.load(open('src/models/RandomForset-2', "rb"))
