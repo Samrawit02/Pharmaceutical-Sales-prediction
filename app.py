@@ -1,18 +1,18 @@
 import streamlit as st
 import awesome_streamlit as ast
-import src.pages.home
-import src.pages.predition
-import src.pages.insights
-import src.pages.data
+import web.src.pages.home
+import web.src.pages.predition
+import web.src.pages.insights
+import web.src.pages.data
 
 ast.core.services.other.set_logging_format()
 
 # create the choices
 PAGES = {
-    "Home": src.pages.home,
-    "Data":src.pages.data,
-    "Insights": src.pages.insights,
-    "Run Predictions": src.pages.predition
+    "Home": web.src.pages.home,
+    "Data":web.src.pages.data,
+    "Insights": web.src.pages.insights,
+    "Run Predictions": web.src.pages.predition
 }
 
 # render the pages
