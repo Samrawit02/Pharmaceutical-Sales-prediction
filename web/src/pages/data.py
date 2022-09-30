@@ -13,8 +13,8 @@ def write():
     The *Sales, Customers, Open, State Holiday* and *School Holiday* features vary across the stores with days.
     """)
     na_value=['',' ','nan','Nan','NaN','na', '<Na>']
-    train = pd.read_csv('src/data/clean_train_data.csv', na_values=na_value)
-    store = pd.read_csv('src/data/clean_store_data.csv', na_values=na_value)
+    train = pd.read_csv('web/src/data/clean_train_data.csv', na_values=na_value)
+    store = pd.read_csv('web/src/data/clean_store_data.csv', na_values=na_value)
     full_train = pd.merge(left = train, right = store, how = 'inner', left_on = 'Store', right_on = 'Store')
     full_train = full_train.set_index('Store')
     st.write('---')
